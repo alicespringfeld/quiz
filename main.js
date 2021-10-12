@@ -1,20 +1,34 @@
-const correctAnswer = false;
+const correctAnswer = true;
 
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = "Am I a robot?";
 
-document.querySelector(".yes").onclick = function () {
+const yesButton = document.querySelector(".yes");
+yesButton.onclick = function () {
   if (correctAnswer === true) {
-    alert("Correct!");
+    const newPforJa = document.createElement("p");
+    newPforJa.id = "pYes";
+    newPforJa.textContent = "This answer is correct!";
+    document.body.appendChild(newPforJa);
   } else {
-    alert("False! I am a true robot!");
+    const newPforNo = document.createElement("p");
+    newPforNo.id = "pNo";
+    newPforNo.textContent = "This answer is wrong!";
+    document.body.appendChild(newPforNo);
   }
 };
 
-document.querySelector(".no").onclick = function () {
+const noButton = document.querySelector(".no");
+noButton.onclick = function () {
   if (correctAnswer === false) {
-    alert("Correct!");
+    const newPforJa = document.createElement("p");
+    newPforJa.id = "pYes";
+    newPforJa.textContent = "This answer is correct!";
+    document.body.appendChild(newPforJa);
   } else {
-    alert("False! I am a true robot!");
+    const newPforNo = document.createElement("p");
+    newPforNo.id = "pNo";
+    newPforNo.textContent = "This answer is wrong!";
+    document.body.appendChild(newPforNo);
   }
 };

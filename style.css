@@ -1,3 +1,6 @@
-.yes {
-  background-color: green;
+#pYes {
+  color: green;
+}
+#pNo {
+  color: red;
 }
