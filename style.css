@@ -1,0 +1,18 @@
+.yes {
+  color: green;
+}
+.no {
+  color: red;
+}
+.quiz {
+  background-color: rgb(65, 42, 87);
+  color: white;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  border-radius: 2rem;
+  place-items: center;
+}
+
+.finish {
+  color: red;
+}
