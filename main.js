@@ -1,10 +1,30 @@
 const questionList = ["Am I a robot?", "Are you a cat?", "Is the earth flat?"];
+
+const answers = [true, false, false];
+
 let questionIndex = 0;
 
-let correctAnswer = true;
+let correctAnswer = answers[questionIndex];
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = questionList[0];
+myQuestion.textContent = questionList[questionIndex];
+updateProgress();
+
+function updateProgress() {
+  const myProgress = document.querySelector(".progress");
+  /*myProgress.textContent =
+  "Question" + (questionIndex + 1) + "/" + questionList.length
+};*/
+  myProgress.textContent = `Question ${questionIndex + 1}/${
+    questionList.length
+  }`;
+  if (questionIndex === 3) {
+    document.querySelector(".progress").textContent = "Yay you did it! ";
+    document.querySelector(".yes").style.display = "none";
+    document.querySelector(".no").style.display = "none";
+    document.querySelector(".progress").classList.add("finish");
+  }
+}
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
@@ -23,12 +43,13 @@ noButton.onclick = function () {
     showAnswerIsFalse();
   }
 };
+const sectionQuiz = document.querySelector(".quiz");
 
 function showAnswerIsCorrect() {
   const newPforJa = document.createElement("p");
   newPforJa.id = "pYes";
   newPforJa.textContent = "This answer is correct!";
-  document.body.appendChild(newPforJa);
+  sectionQuiz.appendChild(newPforJa);
   setTimeout(setNewQuestion, 1200);
 }
 
@@ -36,7 +57,7 @@ function showAnswerIsFalse() {
   const newPforNo = document.createElement("p");
   newPforNo.id = "pNo";
   newPforNo.textContent = "This answer is wrong!";
-  document.body.appendChild(newPforNo);
+  sectionQuiz.appendChild(newPforNo);
   disableButtons();
 }
 
@@ -46,8 +67,13 @@ function disableButtons() {
 }
 
 function setNewQuestion() {
-  correctAnswer = false;
   questionIndex += 1;
+  updateProgress();
+  correctAnswer = answers[questionIndex];
   myQuestion.textContent = questionList[questionIndex];
-  document.body.removeChild(document.querySelector("#pYes"));
+  sectionQuiz.removeChild(document.querySelector("#pYes"));
+}
+
+function quizend() {
+  document.querySelector(".quiz");
 }
